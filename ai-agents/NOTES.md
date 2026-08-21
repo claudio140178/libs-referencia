@@ -7,3 +7,4 @@
 | mattpocock/skills | https://github.com/mattpocock/skills | Colecao de skills para Claude Code, inclui grill-me. |
 | caveman | https://github.com/juliusbrussee/caveman | Skill/ferramenta caveman para Claude Code. |
 | hyperframes-cli | https://github.com/heygen-com/hyperframes | Skill/CLI da HeyGen para criar videos com HyperFrames. |
+| runcomfy-agent-skills | https://github.com/prime-skills/runcomfy-agent-skills | Skills para edicao de video (video-edit) via ComfyUI. |
