@@ -8,3 +8,4 @@
 | caveman | https://github.com/juliusbrussee/caveman | Skill/ferramenta caveman para Claude Code. |
 | hyperframes-cli | https://github.com/heygen-com/hyperframes | Skill/CLI da HeyGen para criar videos com HyperFrames. |
 | runcomfy-agent-skills | https://github.com/prime-skills/runcomfy-agent-skills | Skills para edicao de video (video-edit) via ComfyUI. |
+| skills-divino (local) | C:\Users\claud\Downloads\skills-divino | Colecao propria de skills: arte-algoritmica, skill-auditor, avanca-projeto, componente-react, pesquisa-tendencias. Sem repo no GitHub ainda. |
