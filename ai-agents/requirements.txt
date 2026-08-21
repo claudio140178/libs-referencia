@@ -1,0 +1,2 @@
+notepad C:\Users\claud\Downloads\reference-libs\ai-agents\requirements.txt
+# agent-reach: https://github.com/Panniantong/Agent-Reach.git (CLI, instala via npx, não é pip)
