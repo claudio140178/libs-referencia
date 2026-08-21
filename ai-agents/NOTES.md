@@ -6,3 +6,4 @@
 | vercel-labs/skills | https://github.com/vercel-labs/skills | Colecao de skills para Claude Code, inclui find-skills. |
 | mattpocock/skills | https://github.com/mattpocock/skills | Colecao de skills para Claude Code, inclui grill-me. |
 | caveman | https://github.com/juliusbrussee/caveman | Skill/ferramenta caveman para Claude Code. |
+| hyperframes-cli | https://github.com/heygen-com/hyperframes | Skill/CLI da HeyGen para criar videos com HyperFrames. |
