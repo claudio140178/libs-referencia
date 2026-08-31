@@ -7,3 +7,4 @@
 | public-apis | https://github.com/public-apis/public-apis | Lista enorme de APIs publicas gratuitas por categoria (clima, financas, jogos, etc). |
 | public-apis | https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git | Lista enorme de APIs publicas gratuitas por categoria (clima, financas, jogos, etc). |
 | public-apis | https://github.com/imputnet/cobalt.git | Lista enorme de APIs publicas gratuitas por categoria (clima, financas, jogos, etc). |
+| public-apis | https://github.com/SegmentStork/gmail-account-creator.git | Lista enorme de APIs publicas gratuitas por categoria (clima, financas, jogos, etc). |
