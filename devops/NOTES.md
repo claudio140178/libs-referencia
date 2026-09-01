@@ -11,3 +11,4 @@
 | public-apis | https://github.com/NousResearch/hermes-agent.git | Lista enorme de APIs publicas gratuitas por categoria (clima, financas, jogos, etc). |
 | public-apis | https://github.com/diegosouzapw/OmniRoute.git | Lista enorme de APIs publicas gratuitas por categoria (clima, financas, jogos, etc). |
 | public-apis | https://github.com/n8n-io/n8n.git | Lista enorme de APIs publicas gratuitas por categoria (clima, financas, jogos, etc). |
+| public-apis | https://github.com/PrimeIntellect-ai/prime-agent.git | Lista enorme de APIs publicas gratuitas por categoria (clima, financas, jogos, etc). |
