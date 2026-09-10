@@ -37,3 +37,10 @@ git add .
 git commit -m "docs: adiciona <nome-da-lib> em <categoria>"
 git push
 ```
+
+## Automaton (Conway-Research)
+Repo: https://github.com/Conway-Research/automaton
+Runtime de agente de IA autonomo (TypeScript/Node) que paga pelo proprio compute via cripto (x402/USDC na rede Base), roda em loop ReAct continuo, pode se auto-modificar e se replicar (spawnar filhos), e e restrito por uma 'constituicao' (constitution.md) hardcoded. Tem tiers de sobrevivencia por saldo de creditos (full -> degradado -> minimo -> zero/morte). MIT license.
+Uso: referencia de arquitetura para agentes autonomos com orcamento/sobrevivencia proprios; skills em Conway-Research/skills (SKILL.md) sao um bom padrao pra expor APIs proprias (ex: NexusHive, Ciclope) como tools chamaveis.
+Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva minima morta, validacao de pacote npm vulneravel a owner/repo do GitHub, wallet sem criptografia, bypass de leitura de arquivo sensivel via copia renomeada, tokenizer com blowup em texto repetitivo) - corrigidos em fork local, nao no upstream.
+
