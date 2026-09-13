@@ -68,3 +68,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [video-use](https://github.com/browser-use/video-use) — edita vídeo via conversa com coding agents (Claude Code, Codex etc): corta silêncios/vícios de fala, color grading, legendas, overlays de animação (HyperFrames/Remotion/Manim/PIL) em sub-agentes paralelos, self-eval em cada corte; usa transcrição + visuais sob demanda em vez de frame a frame
 
 - [Superpowers](https://github.com/obra/superpowers) — framework/metodologia de desenvolvimento de software para coding agents: skills componiveis para TDD (red/green), debugging sistemático em 4 fases, revisão de código, brainstorming e planos de execução. JÁ INSTALADO como plugin no meu ambiente Claude Code
+
+- [Everything Claude Code](https://github.com/WorldFlowAI/everything-claude-code) — toolkit completo pro Claude Code (agents, skills, hooks, comandos, rules), de vencedor de hackathon Anthropic; cobre otimização de tokens, persistência de memória entre sessões, aprendizado contínuo, loops de verificação e paralelização com git worktrees
