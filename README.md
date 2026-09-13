@@ -62,3 +62,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [anydoc](https://github.com/firecrawl/anydoc) — lib em Rust (bindings Node.js/Python) que converte Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV e PDF em Markdown limpo em poucos ms; vem com Agent Skill pronta; MIT
 
 - [Archify](https://github.com/tt-a1i/archify) — Agent Skill (Cursor, Claude Code, Codex CLI, OpenCode, DeepSeek Harness) que gera diagramas de arquitetura/workflow/sequência/data-flow a partir de JSON IR tipado; saída HTML autocontida com animação e export PNG/SVG/WebM; MIT
+
+- [OpenMontage](https://github.com/calesthio/OpenMontage) — sistema agêntico open-source de produção de vídeo: 12 pipelines, 100+ ferramentas, 700+ skills de produção; transforma um AI coding assistant (Claude Code, Cursor, Codex) em estúdio de vídeo completo (pesquisa, roteiro, assets, edição, timeline, render); AGPL-3.0
