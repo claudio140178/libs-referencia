@@ -70,3 +70,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [Superpowers](https://github.com/obra/superpowers) — framework/metodologia de desenvolvimento de software para coding agents: skills componiveis para TDD (red/green), debugging sistemático em 4 fases, revisão de código, brainstorming e planos de execução. JÁ INSTALADO como plugin no meu ambiente Claude Code
 
 - [Everything Claude Code](https://github.com/WorldFlowAI/everything-claude-code) — toolkit completo pro Claude Code (agents, skills, hooks, comandos, rules), de vencedor de hackathon Anthropic; cobre otimização de tokens, persistência de memória entre sessões, aprendizado contínuo, loops de verificação e paralelização com git worktrees
+
+- [RuFlo](https://github.com/ruvnet/ruflo) — harness de agentes (ex-Claude Flow) para orquestrar swarms multi-agente coordenados sobre Claude Code/Codex/Hermes: memória adaptativa self-learning, federação entre máquinas, RAG vetorial, +100 agentes especializados. MIT, +40k stars
