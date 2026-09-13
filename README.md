@@ -56,3 +56,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [Orca](https://github.com/stablyai/orca) — ADE para rodar uma frota de agentes de código em paralelo (Claude Code, Codex, Cursor, Copilot e outros), cada um em git worktree isolado, com sua própria assinatura; desktop, mobile e runtime remoto
 
 - [Claudex Loop](https://github.com/chaseai-yt/claudex-loop) — skill do Claude Code para endurecer um plano antes de codar: 4 fases (recon, interrogatório, revisão adversarial cross-model via Codex, build/inspeção cruzada); evita que o mesmo modelo avalie o próprio plano
+
+- [No AI Slop](https://github.com/petergyang/no-ai-slop) — skill (Claude Code/Codex/ChatGPT) que remove 20+ padrões de 'AI slop' de textos gerados por IA (contrastes binários, aberturas de enrolação, finais pseudo-profundos), preservando a voz pessoal do autor
