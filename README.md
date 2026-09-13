@@ -50,3 +50,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [SkillSpector](https://github.com/NVIDIA/SkillSpector) — scanner de segurança para skills de agentes de IA (Claude Code, Codex, MCP); detecta prompt injection, exfiltração de dados, escalada de privilégio e outros riscos antes de instalar uma skill
 
 - [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) — agent harness open-source da DeepSeek AI (arquitetura everything-is-a-plugin sobre o meta-framework Cordis); compõe modelos, ferramentas, sessões, sandboxes e orquestração como plugins. Developer preview, MIT license
+
+- [Omarchy](https://github.com/omacom/omarchy) — distro Linux baseada em Arch, opinativa e voltada para workflow com agentes de IA, criada por DHH (Hyprland, instalador guiado, sistema de plugins)
