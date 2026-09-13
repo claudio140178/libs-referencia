@@ -64,3 +64,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [Archify](https://github.com/tt-a1i/archify) — Agent Skill (Cursor, Claude Code, Codex CLI, OpenCode, DeepSeek Harness) que gera diagramas de arquitetura/workflow/sequência/data-flow a partir de JSON IR tipado; saída HTML autocontida com animação e export PNG/SVG/WebM; MIT
 
 - [OpenMontage](https://github.com/calesthio/OpenMontage) — sistema agêntico open-source de produção de vídeo: 12 pipelines, 100+ ferramentas, 700+ skills de produção; transforma um AI coding assistant (Claude Code, Cursor, Codex) em estúdio de vídeo completo (pesquisa, roteiro, assets, edição, timeline, render); AGPL-3.0
+
+- [video-use](https://github.com/browser-use/video-use) — edita vídeo via conversa com coding agents (Claude Code, Codex etc): corta silêncios/vícios de fala, color grading, legendas, overlays de animação (HyperFrames/Remotion/Manim/PIL) em sub-agentes paralelos, self-eval em cada corte; usa transcrição + visuais sob demanda em vez de frame a frame
