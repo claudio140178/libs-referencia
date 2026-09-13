@@ -52,3 +52,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) — agent harness open-source da DeepSeek AI (arquitetura everything-is-a-plugin sobre o meta-framework Cordis); compõe modelos, ferramentas, sessões, sandboxes e orquestração como plugins. Developer preview, MIT license
 
 - [Omarchy](https://github.com/omacom/omarchy) — distro Linux baseada em Arch, opinativa e voltada para workflow com agentes de IA, criada por DHH (Hyprland, instalador guiado, sistema de plugins)
+
+- [Orca](https://github.com/stablyai/orca) — ADE para rodar uma frota de agentes de código em paralelo (Claude Code, Codex, Cursor, Copilot e outros), cada um em git worktree isolado, com sua própria assinatura; desktop, mobile e runtime remoto
