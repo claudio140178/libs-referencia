@@ -44,3 +44,5 @@ Runtime de agente de IA autonomo (TypeScript/Node) que paga pelo proprio compute
 Uso: referencia de arquitetura para agentes autonomos com orcamento/sobrevivencia proprios; skills em Conway-Research/skills (SKILL.md) sao um bom padrao pra expor APIs proprias (ex: NexusHive, Ciclope) como tools chamaveis.
 Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva minima morta, validacao de pacote npm vulneravel a owner/repo do GitHub, wallet sem criptografia, bypass de leitura de arquivo sensivel via copia renomeada, tokenizer com blowup em texto repetitivo) - corrigidos em fork local, nao no upstream.
 
+
+- [improve](https://github.com/shadcn/improve) — usa o modelo mais capaz pra auditar o codebase e escrever planos de execução para modelos mais baratos (skill Claude Code, comando /improve)
