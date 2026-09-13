@@ -58,3 +58,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [Claudex Loop](https://github.com/chaseai-yt/claudex-loop) — skill do Claude Code para endurecer um plano antes de codar: 4 fases (recon, interrogatório, revisão adversarial cross-model via Codex, build/inspeção cruzada); evita que o mesmo modelo avalie o próprio plano
 
 - [No AI Slop](https://github.com/petergyang/no-ai-slop) — skill (Claude Code/Codex/ChatGPT) que remove 20+ padrões de 'AI slop' de textos gerados por IA (contrastes binários, aberturas de enrolação, finais pseudo-profundos), preservando a voz pessoal do autor
+
+- [anydoc](https://github.com/firecrawl/anydoc) — lib em Rust (bindings Node.js/Python) que converte Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV e PDF em Markdown limpo em poucos ms; vem com Agent Skill pronta; MIT
