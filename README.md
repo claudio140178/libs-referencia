@@ -60,3 +60,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [No AI Slop](https://github.com/petergyang/no-ai-slop) — skill (Claude Code/Codex/ChatGPT) que remove 20+ padrões de 'AI slop' de textos gerados por IA (contrastes binários, aberturas de enrolação, finais pseudo-profundos), preservando a voz pessoal do autor
 
 - [anydoc](https://github.com/firecrawl/anydoc) — lib em Rust (bindings Node.js/Python) que converte Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV e PDF em Markdown limpo em poucos ms; vem com Agent Skill pronta; MIT
+
+- [Archify](https://github.com/tt-a1i/archify) — Agent Skill (Cursor, Claude Code, Codex CLI, OpenCode, DeepSeek Harness) que gera diagramas de arquitetura/workflow/sequência/data-flow a partir de JSON IR tipado; saída HTML autocontida com animação e export PNG/SVG/WebM; MIT
