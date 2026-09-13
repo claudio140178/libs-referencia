@@ -46,3 +46,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 
 
 - [improve](https://github.com/shadcn/improve) — usa o modelo mais capaz pra auditar o codebase e escrever planos de execução para modelos mais baratos (skill Claude Code, comando /improve)
+
+- [SkillSpector](https://github.com/NVIDIA/SkillSpector) — scanner de segurança para skills de agentes de IA (Claude Code, Codex, MCP); detecta prompt injection, exfiltração de dados, escalada de privilégio e outros riscos antes de instalar uma skill
