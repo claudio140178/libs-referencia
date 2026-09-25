@@ -74,3 +74,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [RuFlo](https://github.com/ruvnet/ruflo) — harness de agentes (ex-Claude Flow) para orquestrar swarms multi-agente coordenados sobre Claude Code/Codex/Hermes: memória adaptativa self-learning, federação entre máquinas, RAG vetorial, +100 agentes especializados. MIT, +40k stars
 
 - [Open Design](https://github.com/nexu-io/open-design) — alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
+
+- [Open Design](https://github.com/nexu-io/open-design) — alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
