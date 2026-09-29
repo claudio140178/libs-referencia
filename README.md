@@ -45,64 +45,32 @@ Uso: referencia de arquitetura para agentes autonomos com orcamento/sobrevivenci
 Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva minima morta, validacao de pacote npm vulneravel a owner/repo do GitHub, wallet sem criptografia, bypass de leitura de arquivo sensivel via copia renomeada, tokenizer com blowup em texto repetitivo) - corrigidos em fork local, nao no upstream.
 
 
-- [improve](https://github.com/shadcn/improve) ó usa o modelo mais capaz pra auditar o codebase e escrever planos de execuÁ„o para modelos mais baratos (skill Claude Code, comando /improve)
+- [improve](https://github.com/shadcn/improve) ‚Äî usa o modelo mais capaz pra auditar o codebase e escrever planos de execu√ß√£o para modelos mais baratos (skill Claude Code, comando /improve)
 
-- [SkillSpector](https://github.com/NVIDIA/SkillSpector) ó scanner de seguranÁa para skills de agentes de IA (Claude Code, Codex, MCP); detecta prompt injection, exfiltraÁ„o de dados, escalada de privilÈgio e outros riscos antes de instalar uma skill
+- [SkillSpector](https://github.com/NVIDIA/SkillSpector) ‚Äî scanner de seguran√ßa para skills de agentes de IA (Claude Code, Codex, MCP); detecta prompt injection, exfiltra√ß√£o de dados, escalada de privil√©gio e outros riscos antes de instalar uma skill
 
-- [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) ó agent harness open-source da DeepSeek AI (arquitetura everything-is-a-plugin sobre o meta-framework Cordis); compıe modelos, ferramentas, sessıes, sandboxes e orquestraÁ„o como plugins. Developer preview, MIT license
+- [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) ‚Äî agent harness open-source da DeepSeek AI (arquitetura everything-is-a-plugin sobre o meta-framework Cordis); comp√µe modelos, ferramentas, sess√µes, sandboxes e orquestra√ß√£o como plugins. Developer preview, MIT license
 
-- [Omarchy](https://github.com/omacom/omarchy) ó distro Linux baseada em Arch, opinativa e voltada para workflow com agentes de IA, criada por DHH (Hyprland, instalador guiado, sistema de plugins)
+- [Omarchy](https://github.com/omacom/omarchy) ‚Äî distro Linux baseada em Arch, opinativa e voltada para workflow com agentes de IA, criada por DHH (Hyprland, instalador guiado, sistema de plugins)
 
-- [Orca](https://github.com/stablyai/orca) ó ADE para rodar uma frota de agentes de cÛdigo em paralelo (Claude Code, Codex, Cursor, Copilot e outros), cada um em git worktree isolado, com sua prÛpria assinatura; desktop, mobile e runtime remoto
+- [Orca](https://github.com/stablyai/orca) ‚Äî ADE para rodar uma frota de agentes de c√≥digo em paralelo (Claude Code, Codex, Cursor, Copilot e outros), cada um em git worktree isolado, com sua pr√≥pria assinatura; desktop, mobile e runtime remoto
 
-- [Claudex Loop](https://github.com/chaseai-yt/claudex-loop) ó skill do Claude Code para endurecer um plano antes de codar: 4 fases (recon, interrogatÛrio, revis„o adversarial cross-model via Codex, build/inspeÁ„o cruzada); evita que o mesmo modelo avalie o prÛprio plano
+- [Claudex Loop](https://github.com/chaseai-yt/claudex-loop) ‚Äî skill do Claude Code para endurecer um plano antes de codar: 4 fases (recon, interrogat√≥rio, revis√£o adversarial cross-model via Codex, build/inspe√ß√£o cruzada); evita que o mesmo modelo avalie o pr√≥prio plano
 
-- [No AI Slop](https://github.com/petergyang/no-ai-slop) ó skill (Claude Code/Codex/ChatGPT) que remove 20+ padrıes de 'AI slop' de textos gerados por IA (contrastes bin·rios, aberturas de enrolaÁ„o, finais pseudo-profundos), preservando a voz pessoal do autor
+- [No AI Slop](https://github.com/petergyang/no-ai-slop) ‚Äî skill (Claude Code/Codex/ChatGPT) que remove 20+ padr√µes de 'AI slop' de textos gerados por IA (contrastes bin√°rios, aberturas de enrola√ß√£o, finais pseudo-profundos), preservando a voz pessoal do autor
 
-- [anydoc](https://github.com/firecrawl/anydoc) ó lib em Rust (bindings Node.js/Python) que converte Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV e PDF em Markdown limpo em poucos ms; vem com Agent Skill pronta; MIT
+- [anydoc](https://github.com/firecrawl/anydoc) ‚Äî lib em Rust (bindings Node.js/Python) que converte Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV e PDF em Markdown limpo em poucos ms; vem com Agent Skill pronta; MIT
 
-- [Archify](https://github.com/tt-a1i/archify) ó Agent Skill (Cursor, Claude Code, Codex CLI, OpenCode, DeepSeek Harness) que gera diagramas de arquitetura/workflow/sequÍncia/data-flow a partir de JSON IR tipado; saÌda HTML autocontida com animaÁ„o e export PNG/SVG/WebM; MIT
+- [Archify](https://github.com/tt-a1i/archify) ‚Äî Agent Skill (Cursor, Claude Code, Codex CLI, OpenCode, DeepSeek Harness) que gera diagramas de arquitetura/workflow/sequ√™ncia/data-flow a partir de JSON IR tipado; sa√≠da HTML autocontida com anima√ß√£o e export PNG/SVG/WebM; MIT
 
-- [OpenMontage](https://github.com/calesthio/OpenMontage) ó sistema agÍntico open-source de produÁ„o de vÌdeo: 12 pipelines, 100+ ferramentas, 700+ skills de produÁ„o; transforma um AI coding assistant (Claude Code, Cursor, Codex) em est˙dio de vÌdeo completo (pesquisa, roteiro, assets, ediÁ„o, timeline, render); AGPL-3.0
+- [OpenMontage](https://github.com/calesthio/OpenMontage) ‚Äî sistema ag√™ntico open-source de produ√ß√£o de v√≠deo: 12 pipelines, 100+ ferramentas, 700+ skills de produ√ß√£o; transforma um AI coding assistant (Claude Code, Cursor, Codex) em est√∫dio de v√≠deo completo (pesquisa, roteiro, assets, edi√ß√£o, timeline, render); AGPL-3.0
 
-- [video-use](https://github.com/browser-use/video-use) ó edita vÌdeo via conversa com coding agents (Claude Code, Codex etc): corta silÍncios/vÌcios de fala, color grading, legendas, overlays de animaÁ„o (HyperFrames/Remotion/Manim/PIL) em sub-agentes paralelos, self-eval em cada corte; usa transcriÁ„o + visuais sob demanda em vez de frame a frame
+- [video-use](https://github.com/browser-use/video-use) ‚Äî edita v√≠deo via conversa com coding agents (Claude Code, Codex etc): corta sil√™ncios/v√≠cios de fala, color grading, legendas, overlays de anima√ß√£o (HyperFrames/Remotion/Manim/PIL) em sub-agentes paralelos, self-eval em cada corte; usa transcri√ß√£o + visuais sob demanda em vez de frame a frame
 
-- [Superpowers](https://github.com/obra/superpowers) ó framework/metodologia de desenvolvimento de software para coding agents: skills componiveis para TDD (red/green), debugging sistem·tico em 4 fases, revis„o de cÛdigo, brainstorming e planos de execuÁ„o. J¡ INSTALADO como plugin no meu ambiente Claude Code
+- [Superpowers](https://github.com/obra/superpowers) ‚Äî framework/metodologia de desenvolvimento de software para coding agents: skills componiveis para TDD (red/green), debugging sistem√°tico em 4 fases, revis√£o de c√≥digo, brainstorming e planos de execu√ß√£o. J√Å INSTALADO como plugin no meu ambiente Claude Code
 
-- [Everything Claude Code](https://github.com/WorldFlowAI/everything-claude-code) ó toolkit completo pro Claude Code (agents, skills, hooks, comandos, rules), de vencedor de hackathon Anthropic; cobre otimizaÁ„o de tokens, persistÍncia de memÛria entre sessıes, aprendizado contÌnuo, loops de verificaÁ„o e paralelizaÁ„o com git worktrees
+- [Everything Claude Code](https://github.com/WorldFlowAI/everything-claude-code) ‚Äî toolkit completo pro Claude Code (agents, skills, hooks, comandos, rules), de vencedor de hackathon Anthropic; cobre otimiza√ß√£o de tokens, persist√™ncia de mem√≥ria entre sess√µes, aprendizado cont√≠nuo, loops de verifica√ß√£o e paraleliza√ß√£o com git worktrees
 
-- [RuFlo](https://github.com/ruvnet/ruflo) ó harness de agentes (ex-Claude Flow) para orquestrar swarms multi-agente coordenados sobre Claude Code/Codex/Hermes: memÛria adaptativa self-learning, federaÁ„o entre m·quinas, RAG vetorial, +100 agentes especializados. MIT, +40k stars
+- [RuFlo](https://github.com/ruvnet/ruflo) ‚Äî harness de agentes (ex-Claude Flow) para orquestrar swarms multi-agente coordenados sobre Claude Code/Codex/Hermes: mem√≥ria adaptativa self-learning, federa√ß√£o entre m√°quinas, RAG vetorial, +100 agentes especializados. MIT, +40k stars
 
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
-
-- [Open Design](https://github.com/nexu-io/open-design) ó alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
+- [Open Design](https://github.com/nexu-io/open-design) ‚Äî alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade

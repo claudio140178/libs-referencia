@@ -1,0 +1,5 @@
+fastapi
+sqlmodel
+uv
+ruff
+pytest
