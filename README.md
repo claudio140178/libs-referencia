@@ -78,3 +78,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [Open Design](https://github.com/nexu-io/open-design) — alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
 
 - [Open Design](https://github.com/nexu-io/open-design) — alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
+
+- [Open Design](https://github.com/nexu-io/open-design) — alternativa open-source local-first/BYOK ao Claude Design; transforma o coding agent (Claude Code, Codex, Cursor, DeepSeek Harness) em motor de design: prototipos, landing pages, dashboards, slides, imagens e video com export HTML/PDF/PPTX/MP4; centenas de skills e design systems brand-grade
