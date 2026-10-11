@@ -98,3 +98,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [Chatwoot](https://github.com/chatwoot/chatwoot)  plataforma open-source de atendimento ao cliente self-hosted (live-chat, email, omnichannel), alternativa ao Intercom/Zendesk/Salesforce; Ruby on Rails + Vue, MIT, +37k stars
 
 - [Open SEO MCP Skills](https://github.com/Ryze-AI-Adgent/open-seo-mcp-skills)  MCP server gratuito de SEO + skills open-source para Claude: keyword research, rank tracking, audits, backlinks, AI visibility/GEO, usando dados reais de GSC/GA4/Ads
+
+- [Open SEO MCP Skills](https://github.com/Ryze-AI-Adgent/open-seo-mcp-skills)  MCP server gratuito de SEO + skills open-source para Claude: keyword research, rank tracking, audits, backlinks, AI visibility/GEO, usando dados reais de GSC/GA4/Ads
