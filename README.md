@@ -104,3 +104,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [NotFair Plugin](https://github.com/nowork-studio/notfair-plugin)  48 skills open-source de SEO, GEO, midia paga (Google/Meta Ads), analytics, WordPress e CRM para Claude Code/Cursor/Codex; conecta via MCP hospedado (OAuth) a dados reais de GSC/GA4/Ads
 
 - [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR)  toolkit de OCR e parsing de documentos; converte PDF/imagem em dados estruturados (JSON/Markdown) prontos para LLM, suporta 100+ idiomas, inclui modelo visao-linguagem PaddleOCR-VL; Apache, +50k stars
+
+- [Netdata](https://github.com/netdata/netdata)  observabilidade full-stack em tempo real: metricas por segundo, logs, traces, deteccao de anomalias ML, troubleshooting com IA; 850+ integracoes, roda em Linux/Docker/K8s; open-source (Agent GPLv3+), +80k stars
