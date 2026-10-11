@@ -100,3 +100,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [Open SEO MCP Skills](https://github.com/Ryze-AI-Adgent/open-seo-mcp-skills)  MCP server gratuito de SEO + skills open-source para Claude: keyword research, rank tracking, audits, backlinks, AI visibility/GEO, usando dados reais de GSC/GA4/Ads
 
 - [Open SEO MCP Skills](https://github.com/Ryze-AI-Adgent/open-seo-mcp-skills)  MCP server gratuito de SEO + skills open-source para Claude: keyword research, rank tracking, audits, backlinks, AI visibility/GEO, usando dados reais de GSC/GA4/Ads
+
+- [NotFair Plugin](https://github.com/nowork-studio/notfair-plugin)  48 skills open-source de SEO, GEO, midia paga (Google/Meta Ads), analytics, WordPress e CRM para Claude Code/Cursor/Codex; conecta via MCP hospedado (OAuth) a dados reais de GSC/GA4/Ads
