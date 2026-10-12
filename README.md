@@ -116,3 +116,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [Docling](https://github.com/docling-project/docling)  toolkit da IBM Research para preparar documentos para GenAI/RAG: parsing avancado de PDF (layout, tabelas, formulas), DOCX/PPTX/XLSX/HTML/audio, exporta Markdown/HTML/JSON, pipeline VLM (GraniteDocling) e OCR; MIT
 
 - [REA](https://github.com/morluto/rea)  orquestra agentes de IA (Claude Code, Copilot) para engenharia reversa licita: decompila binarios nativos e apps JS via Hopper, retorna manifests/classes/metodos com evidencias, roda local; MIT, MCP server
+
+- [Replica Skill](https://github.com/Jakeschincariol/replica-skill)  11 skills Claude Code que investigam um app concorrente (recon/features) e ajudam a construir sua propria versao: arquitetura, design, backend, build, diff visual, QA, lancamento; MIT
