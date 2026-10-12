@@ -108,3 +108,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [Netdata](https://github.com/netdata/netdata)  observabilidade full-stack em tempo real: metricas por segundo, logs, traces, deteccao de anomalias ML, troubleshooting com IA; 850+ integracoes, roda em Linux/Docker/K8s; open-source (Agent GPLv3+), +80k stars
 
 - [GTM Attribution Insight Tag](https://github.com/Jude-Nwachukwu/gtm-attribution-insight-tag)  template custom para Google Tag Manager (aprovado pelo Google): captura UTMs e click IDs (gclid/fbclid/msclkid), infere dados do referrer, classifica trafego de AI Overview/Featured Snippets, suporta first-click attribution; grava em cookie/localStorage/dataLayer
+
+- [Hypit](https://github.com/hypit-ai/hypit)  linguagem/sistema para agentes de IA (Claude Code, Codex) clonarem video viral como workflow completo: troca de rosto, texto, B-roll, legendas por palavra, 100 variantes em um comando; TypeScript, open-source, #1 trending
