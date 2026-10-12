@@ -112,3 +112,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [Hypit](https://github.com/hypit-ai/hypit)  linguagem/sistema para agentes de IA (Claude Code, Codex) clonarem video viral como workflow completo: troca de rosto, texto, B-roll, legendas por palavra, 100 variantes em um comando; TypeScript, open-source, #1 trending
 
 - [Founder Skills](https://github.com/ognjengt/founder-skills)  20+ Claude skills para founders/marketers: PRD generator, go-to-market plan, competitor intel, CRO optimization, pricing strategy, outreach; MIT
+
+- [Docling](https://github.com/docling-project/docling)  toolkit da IBM Research para preparar documentos para GenAI/RAG: parsing avancado de PDF (layout, tabelas, formulas), DOCX/PPTX/XLSX/HTML/audio, exporta Markdown/HTML/JSON, pipeline VLM (GraniteDocling) e OCR; MIT
