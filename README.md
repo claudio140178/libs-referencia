@@ -106,3 +106,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR)  toolkit de OCR e parsing de documentos; converte PDF/imagem em dados estruturados (JSON/Markdown) prontos para LLM, suporta 100+ idiomas, inclui modelo visao-linguagem PaddleOCR-VL; Apache, +50k stars
 
 - [Netdata](https://github.com/netdata/netdata)  observabilidade full-stack em tempo real: metricas por segundo, logs, traces, deteccao de anomalias ML, troubleshooting com IA; 850+ integracoes, roda em Linux/Docker/K8s; open-source (Agent GPLv3+), +80k stars
+
+- [GTM Attribution Insight Tag](https://github.com/Jude-Nwachukwu/gtm-attribution-insight-tag)  template custom para Google Tag Manager (aprovado pelo Google): captura UTMs e click IDs (gclid/fbclid/msclkid), infere dados do referrer, classifica trafego de AI Overview/Featured Snippets, suporta first-click attribution; grava em cookie/localStorage/dataLayer
