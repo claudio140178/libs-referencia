@@ -124,3 +124,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [Caveman](https://github.com/JuliusBrussee/caveman)  reduz gasto de tokens de agentes de IA (Claude Code, Codex, 30+ agentes): respostas curtas estilo "caveman", leitura enxuta de arquivos (~33% menos tokens de entrada), modo Auto e Blocks; skills, hooks, MCP e CLI; Apache-2.0, #1 GitHub Trending
 
 - [ECC (Everything Claude Code)](https://github.com/affaan-m/ECC)  "sistema operacional" de harness para agentes, do vencedor do hackathon da Anthropic: colecao completa de agents, skills, hooks, rules, comandos e configs MCP prontos para producao; memoria, aprendizado continuo, scan de seguranca (AgentShield); funciona em Claude Code, Codex, Cursor, OpenCode, Gemini; MIT, +140k stars
+
+- [TogetherJS](https://github.com/jsfiddle/togetherjs)  colaboracao em tempo real embutida em qualquer site: duas pessoas veem cursores, edicoes e navegam juntas na mesma pagina (co-browsing para suporte/vendas); originalmente da Mozilla, mantido pelo JSFiddle; hub proprio via Cloudflare Workers + Durable Objects (plano gratis); MPL-2.0
