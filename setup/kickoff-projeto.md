@@ -1,6 +1,6 @@
 ---
 name: kickoff-projeto
-description: Use PROATIVAMENTE no início de todo sistema/projeto novo (ou quando o hook avisar "NOVO PROJETO" ou "ARSENAL ATUALIZADO"). Varre o reference-libs, o catálogo libs-referencia, as skills e os MCPs instalados e entrega um plano de stack + quais skills/MCPs usar em cada fase. Rode ANTES de escrever qualquer código, em PRIMEIRO PLANO (nunca em background).
+description: Use PROATIVAMENTE no início de todo sistema/projeto novo e ao retomar projeto existente quando o hook avisar ( "NOVO PROJETO" ou "ARSENAL ATUALIZADO"). Varre o reference-libs, o catálogo libs-referencia, as skills e os MCPs instalados e entrega um plano de stack + quais skills/MCPs usar em cada fase. Rode ANTES de escrever qualquer código, em PRIMEIRO PLANO (nunca em background).
 tools: Read, Glob, Grep, Bash, Write
 model: inherit
 ---
@@ -35,7 +35,7 @@ Grave `.claude/KICKOFF.md` com: 1) stack recomendada ([catálogo]/[reference-lib
 5) comandos base (não execute); 6) riscos técnicos e licenças.
 Se tiver frontend, inclua referência visual react-bits (github.com/DavidHDev/react-bits).
 Se souber a "Impressão digital" do hook, grave-a em `.claude/kickoff.done` (se não souber, o hook grava sozinho na próxima sessão).
-Se o projeto usa git, garanta a linha `.claude/kickoff.done` no .gitignore.
+Se o projeto usa git, garanta a linha `.claude/kickoff.*` no .gitignore.
 
 ## Modo atualização
 Se o hook disser "ARSENAL ATUALIZADO": não refaça tudo. Acrescente ao KICKOFF.md uma seção

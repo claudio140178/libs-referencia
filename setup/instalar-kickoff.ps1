@@ -1,5 +1,5 @@
 ﻿# =====================================================================
-#  Instalador do agente "kickoff-projeto" v3 para Claude Code (Windows)
+#  Instalador do agente "kickoff-projeto" v4 para Claude Code (Windows)
 #  Rode:  powershell -ExecutionPolicy Bypass -File .\instalar-kickoff.ps1
 # =====================================================================
 $ErrorActionPreference = 'Stop'
@@ -16,7 +16,7 @@ New-Item -ItemType Directory -Force -Path $agents, $hooks | Out-Null
 $agentMd = @'
 ---
 name: kickoff-projeto
-description: Use PROATIVAMENTE no início de todo sistema/projeto novo (ou quando o hook avisar "NOVO PROJETO" ou "ARSENAL ATUALIZADO"). Varre o reference-libs, o catálogo libs-referencia, as skills e os MCPs instalados e entrega um plano de stack + quais skills/MCPs usar em cada fase. Rode ANTES de escrever qualquer código, em PRIMEIRO PLANO (nunca em background).
+description: Use PROATIVAMENTE no início de todo sistema/projeto novo e ao retomar projeto existente quando o hook avisar ( "NOVO PROJETO" ou "ARSENAL ATUALIZADO"). Varre o reference-libs, o catálogo libs-referencia, as skills e os MCPs instalados e entrega um plano de stack + quais skills/MCPs usar em cada fase. Rode ANTES de escrever qualquer código, em PRIMEIRO PLANO (nunca em background).
 tools: Read, Glob, Grep, Bash, Write
 model: inherit
 ---
@@ -51,7 +51,7 @@ Grave `.claude/KICKOFF.md` com: 1) stack recomendada ([catálogo]/[reference-lib
 5) comandos base (não execute); 6) riscos técnicos e licenças.
 Se tiver frontend, inclua referência visual react-bits (github.com/DavidHDev/react-bits).
 Se souber a "Impressão digital" do hook, grave-a em `.claude/kickoff.done` (se não souber, o hook grava sozinho na próxima sessão).
-Se o projeto usa git, garanta a linha `.claude/kickoff.done` no .gitignore.
+Se o projeto usa git, garanta a linha `.claude/kickoff.*` no .gitignore.
 
 ## Modo atualização
 Se o hook disser "ARSENAL ATUALIZADO": não refaça tudo. Acrescente ao KICKOFF.md uma seção
@@ -80,6 +80,18 @@ $prefixos = @('D:\reference-libs', 'C:\reference-libs', "$env:USERPROFILE\Docume
 if ($ignorar -contains $cwd) { exit 0 }
 foreach ($p in $prefixos) { if ($cwd -like "$p*") { exit 0 } }
 
+# Catálogo libs-referencia: puxa a versão mais nova do GitHub (sem travar a sessão)
+$cat = Join-Path $env:USERPROFILE 'Documents\libs-referencia'
+if (Test-Path (Join-Path $cat '.git')) {
+  $env:GIT_TERMINAL_PROMPT = '0'
+  $job = Start-Job { param($d) git -C $d pull --ff-only -q 2>$null } -ArgumentList $cat
+  Wait-Job $job -Timeout 8 | Out-Null; Remove-Job $job -Force
+}
+$catReadme = Join-Path $cat 'README.md'
+$catHash = if (Test-Path $catReadme) { (Get-FileHash $catReadme -Algorithm SHA256).Hash.Substring(0,16) } else { '' }
+$catPath = $cat -replace '\\','/'
+$lembrete = "PROJETO EM ANDAMENTO: siga .claude/KICKOFF.md. Antes de adicionar qualquer lib/ferramenta/serviço novo nesta sessão, consulte o catálogo $catPath/README.md (e as pastas por área) e prefira o que já está lá; se usar algo fora do catálogo, diga por quê."
+
 # Impressão digital: nomes de skills, plugins, MCPs e repos (sem versões)
 $cl = Join-Path $env:USERPROFILE '.claude'
 $itens = @()
@@ -98,14 +110,24 @@ $sha = [Security.Cryptography.SHA256]::Create()
 $fp  = ([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($txt))) -replace '-','').Substring(0,16)
 
 $done = Join-Path $cwd '.claude\kickoff.done'
-if (-not (Test-Path $done) -and (Test-Path (Join-Path $cwd '.claude\KICKOFF.md'))) { Set-Content $done $fp; exit 0 }
+$catDone = Join-Path $cwd '.claude\kickoff.cat'
+if (-not (Test-Path $done) -and (Test-Path (Join-Path $cwd '.claude\KICKOFF.md'))) {
+  Set-Content $done $fp; if ($catHash) { Set-Content $catDone $catHash }
+  Write-Output $lembrete; exit 0
+}
 if (Test-Path $done) {
-  if (-not $refOk) { exit 0 }                                   # D: fora: não gera alarme falso
-  if ((Get-Content $done -Raw).Trim() -eq $fp) { exit 0 }       # nada mudou
-  Write-Output "ARSENAL ATUALIZADO: há skills/MCPs/repos novos desde o último kickoff deste projeto."
-  Write-Output "Rode o subagente 'kickoff-projeto' em PRIMEIRO PLANO, em MODO ATUALIZAÇÃO. Impressão digital: $fp"
+  $mudouArsenal = $refOk -and ((Get-Content $done -Raw).Trim() -ne $fp)      # D: fora não gera alarme falso
+  $mudouCat = $catHash -and (-not (Test-Path $catDone) -or (Get-Content $catDone -Raw).Trim() -ne $catHash)
+  if ($mudouArsenal -or $mudouCat) {
+    $oque = @(); if ($mudouCat) { $oque += 'itens novos no catálogo libs-referencia' }; if ($mudouArsenal) { $oque += 'skills/MCPs/repos novos' }
+    Write-Output "ARSENAL ATUALIZADO: $($oque -join ' e ') desde o último kickoff deste projeto."
+    Write-Output "Rode o subagente 'kickoff-projeto' em PRIMEIRO PLANO, em MODO ATUALIZAÇÃO. Impressão digital: $fp"
+    if ($catHash) { Set-Content $catDone $catHash }
+  }
+  Write-Output $lembrete
   exit 0
 }
+if ($catHash) { New-Item -ItemType Directory -Force (Join-Path $cwd '.claude') | Out-Null; Set-Content $catDone $catHash }
 
 $refs = if ($refOk) { (Get-ChildItem $ref -Directory | Select-Object -Expand Name) -join ', ' } else { "INDISPONÍVEL ($ref não respondeu)" }
 Write-Output "NOVO PROJETO detectado em: $cwd"
@@ -124,10 +146,10 @@ if (Test-Path $settingsPath) { Copy-Item $settingsPath "$settingsPath.bak" -Forc
 
 if (-not $settings.PSObject.Properties['hooks']) { $settings | Add-Member hooks ([pscustomobject]@{}) }
 if (-not $settings.hooks.PSObject.Properties['SessionStart']) { $settings.hooks | Add-Member SessionStart @() }
-if (-not (($settings.hooks.SessionStart | ConvertTo-Json -Depth 20) -match 'kickoff\.ps1')) {
-  $settings.hooks.SessionStart = @($settings.hooks.SessionStart) + [pscustomobject]@{
-    matcher = 'startup'; hooks = @([pscustomobject]@{ type = 'command'; command = $cmd; timeout = 15 }) }
-}
+# troca a entrada antiga do kickoff (v3: só 'startup') pela nova: início, retomada (--continue/--resume) e /clear
+$settings.hooks.SessionStart = @(@($settings.hooks.SessionStart) | Where-Object { $_ -and -not (($_ | ConvertTo-Json -Depth 20) -match 'kickoff\.ps1') })
+$settings.hooks.SessionStart = @($settings.hooks.SessionStart) + [pscustomobject]@{
+  matcher = 'startup|resume|clear'; hooks = @([pscustomobject]@{ type = 'command'; command = $cmd; timeout = 30 }) }
 
 if (-not $settings.PSObject.Properties['permissions']) { $settings | Add-Member permissions ([pscustomobject]@{}) }
 if (-not $settings.permissions.PSObject.Properties['allow']) { $settings.permissions | Add-Member allow @() }
@@ -144,6 +166,15 @@ $regra = "`r`n## Kickoff automático de projetos`r`n- Todo sistema novo: antes d
 $atual = if (Test-Path $claudeMd) { [IO.File]::ReadAllText($claudeMd) } else { '' }
 if ($atual -notmatch 'kickoff-projeto') { [IO.File]::WriteAllText($claudeMd, $atual + $regra, $semBom) }
 elseif ($atual -notmatch 'PRIMEIRO PLANO') { [IO.File]::WriteAllText($claudeMd, $atual + "`r`n- kickoff-projeto: sempre em PRIMEIRO PLANO, nunca em background.`r`n", $semBom) }
+$atual = [IO.File]::ReadAllText($claudeMd)
+if ($atual -notmatch 'Projeto em andamento') {
+  $regra2 = "`r`n## Projeto em andamento (sempre)`r`n- Ao CONTINUAR ou EDITAR qualquer projeto: antes de adicionar lib, ferramenta, API ou serviço novo, consulte o catálogo C:/Users/claud/Documents/libs-referencia (README.md + pastas por área) e prefira o que já está lá. Se escolher algo fora do catálogo, diga por quê.`r`n- Se o hook avisar ARSENAL ATUALIZADO, rode o kickoff-projeto em modo atualização antes de seguir.`r`n"
+  [IO.File]::WriteAllText($claudeMd, $atual + $regra2, $semBom)
+}
+
+# catálogo local: garante o clone em Documents (o hook faz git pull a cada sessão)
+$catDir = Join-Path $env:USERPROFILE 'Documents\libs-referencia'
+if (-not (Test-Path (Join-Path $catDir '.git'))) { git clone -q https://github.com/claudio140178/libs-referencia $catDir }
 
 
 # ---------------------------------------------------------------------
@@ -158,4 +189,4 @@ if ((Test-Path 'D:\reference-libs') -and -not (Test-Path 'C:\reference-libs')) {
   } else { Write-Host "C: com menos de 1 GB livre - copia leve pulada (kickoff usa o D:)" -ForegroundColor Yellow }
 }
 
-Write-Host "OK - kickoff-projeto v3 instalado." -ForegroundColor Green
+Write-Host "OK - kickoff-projeto v4 instalado." -ForegroundColor Green
