@@ -120,3 +120,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [My ChatGPT Prompts](https://github.com/p12s/my-chat-gpt-promts)  colecao pessoal de prompts prontos para ChatGPT/GigaChat: resumo de livros e textos, exemplos de design patterns com codigo, resolver LeetCode em Go, refatorar/explicar codigo, pratica de idioma estrangeiro
 
 - [Harvey](https://github.com/darunbeece/harvey)  agente de vendas autonomo que roda na assinatura do Claude Code (ou Codex), sem custo de API: descobre empresas (OpenStreetMap), le os sites, pontua pelo ICP, escreve cold email personalizado, le respostas e conduz ate a reuniao; dashboard local com aprovacao manual de cada envio; Python, Docker, MIT
+
+- [Caveman](https://github.com/JuliusBrussee/caveman)  reduz gasto de tokens de agentes de IA (Claude Code, Codex, 30+ agentes): respostas curtas estilo "caveman", leitura enxuta de arquivos (~33% menos tokens de entrada), modo Auto e Blocks; skills, hooks, MCP e CLI; Apache-2.0, #1 GitHub Trending
