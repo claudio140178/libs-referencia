@@ -118,3 +118,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [Replica Skill](https://github.com/Jakeschincariol/replica-skill)  11 skills Claude Code que investigam um app concorrente (recon/features) e ajudam a construir sua propria versao: arquitetura, design, backend, build, diff visual, QA, lancamento; MIT
 
 - [My ChatGPT Prompts](https://github.com/p12s/my-chat-gpt-promts)  colecao pessoal de prompts prontos para ChatGPT/GigaChat: resumo de livros e textos, exemplos de design patterns com codigo, resolver LeetCode em Go, refatorar/explicar codigo, pratica de idioma estrangeiro
+
+- [Harvey](https://github.com/darunbeece/harvey)  agente de vendas autonomo que roda na assinatura do Claude Code (ou Codex), sem custo de API: descobre empresas (OpenStreetMap), le os sites, pontua pelo ICP, escreve cold email personalizado, le respostas e conduz ate a reuniao; dashboard local com aprovacao manual de cada envio; Python, Docker, MIT
