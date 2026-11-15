@@ -119,7 +119,7 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 
 - [My ChatGPT Prompts](https://github.com/p12s/my-chat-gpt-promts)  colecao pessoal de prompts prontos para ChatGPT/GigaChat: resumo de livros e textos, exemplos de design patterns com codigo, resolver LeetCode em Go, refatorar/explicar codigo, pratica de idioma estrangeiro
 
-- [Harvey](https://github.com/darunbeece/harvey)  agente de vendas autonomo que roda na assinatura do Claude Code (ou Codex), sem custo de API: descobre empresas (OpenStreetMap), le os sites, pontua pelo ICP, escreve cold email personalizado, le respostas e conduz ate a reuniao; dashboard local com aprovacao manual de cada envio; Python, Docker, MIT
+- [Harvey](https://github.com/darunbeece/harvey)  agente de vendas autonomo que roda na assinatura do Claude Code (ou Codex), sem custo de API: descobre empresas (OpenStreetMap), le os sites, pontua pelo ICP, escreve cold email personalizado, le respostas e conduz ate a reuniao; dashboard local com aprovacao manual de cada envio; Python, Docker, MIT (versao antiga; o projeto virou Sellbird, ver abaixo)
 
 - [Caveman](https://github.com/JuliusBrussee/caveman)  reduz gasto de tokens de agentes de IA (Claude Code, Codex, 30+ agentes): respostas curtas estilo "caveman", leitura enxuta de arquivos (~33% menos tokens de entrada), modo Auto e Blocks; skills, hooks, MCP e CLI; Apache-2.0, #1 GitHub Trending
 
@@ -142,3 +142,5 @@ Cuidado: auditoria propria (set/2026) encontrou bugs reais (regra de reserva min
 - [Google Maps Scraper](https://github.com/gosom/google-maps-scraper)  extrai leads de negocios do Google Maps: nome, telefone, site, e-mail, avaliacoes, nota, coordenadas; CLI (CSV/JSON), Web UI, REST API e edicao SaaS self-hosted; skill para agentes (npx skills add gosom/google-maps-scraper) que planeja e roda o scrape por pedido em linguagem natural; Go + Docker, suporte a proxy; MIT
 
 - [Foxpit](https://github.com/lordon1a/foxpit-releases)  app desktop (Windows/macOS/Linux) que roda Claude Code, Codex, OpenCode e Antigravity como um time: agente lider planeja e delega, cada vaga com agente/modelo diferente, memoria compartilhada em .foxpit/memory (markdown no repo), retoma sozinho apos limite de uso, terminais lado a lado + escritorio 3D; usa suas assinaturas. ATENCAO: codigo fechado (repo so tem releases), binario sem assinatura, exige conta Foxpit (trial sem cartao)
+
+- [Sellbird](https://github.com/ethanplusai/sellbird)  ex-Harvey, plataforma open-source de prospeccao/outbound que roda no seu plano Claude ou ChatGPT (sem custo de API): acha empresas (OpenStreetMap gratis ou fonte paga com custo mostrado antes), le sinais de compra no site, acha o decisor, descobre e verifica o e-mail, escreve e envia sequencias pelo seu Gmail/M365/SMTP, le e responde replies, respeita opt-out; aprovacao manual por padrao; sellbird export gera CSV; Python, Docker; AGPL-3.0
