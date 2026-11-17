@@ -1,5 +1,5 @@
 ﻿# =====================================================================
-#  Instalador do agente "kickoff-projeto" v4 para Claude Code (Windows)
+#  Instalador do agente "kickoff-projeto" v5 para Claude Code (Windows)
 #  Rode:  powershell -ExecutionPolicy Bypass -File .\instalar-kickoff.ps1
 # =====================================================================
 $ErrorActionPreference = 'Stop'
@@ -137,6 +137,20 @@ Write-Output "Repos em ${ref}: $refs"
 [IO.File]::WriteAllText((Join-Path $hooks 'kickoff.ps1'), $hookPs1, $comBom)
 
 # ---------------------------------------------------------------------
+# 2b) HOOK de auditoria GEO automática (copiado de setup\geo-audit.ps1)
+# ---------------------------------------------------------------------
+$geoSrc = Join-Path $PSScriptRoot 'geo-audit.ps1'
+if (Test-Path $geoSrc) {
+  [IO.File]::WriteAllText((Join-Path $hooks 'geo-audit.ps1'), [IO.File]::ReadAllText($geoSrc), $comBom)
+} else { Write-Host "Aviso: setup\geo-audit.ps1 não encontrado; rode o instalador de dentro do clone do libs-referencia." -ForegroundColor Yellow }
+
+# uv/uvx (usado pela auditoria GEO): instala só se faltar
+if (-not (Get-Command uvx -ErrorAction SilentlyContinue) -and -not (Test-Path (Join-Path $env:USERPROFILE '.local\bin\uvx.exe'))) {
+  Write-Host "Instalando uv (Astral) para a auditoria GEO..." -ForegroundColor Cyan
+  try { powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://astral.sh/uv/install.ps1 | iex" } catch { Write-Host "Não consegui instalar o uv; instale manualmente: https://docs.astral.sh/uv/" -ForegroundColor Yellow }
+}
+
+# ---------------------------------------------------------------------
 # 3) settings.json: hook + permissões seguras (merge, sem BOM)
 # ---------------------------------------------------------------------
 $settingsPath = Join-Path $claude 'settings.json'
@@ -150,11 +164,17 @@ if (-not $settings.hooks.PSObject.Properties['SessionStart']) { $settings.hooks 
 $settings.hooks.SessionStart = @(@($settings.hooks.SessionStart) | Where-Object { $_ -and -not (($_ | ConvertTo-Json -Depth 20) -match 'kickoff\.ps1') })
 $settings.hooks.SessionStart = @($settings.hooks.SessionStart) + [pscustomobject]@{
   matcher = 'startup|resume|clear'; hooks = @([pscustomobject]@{ type = 'command'; command = $cmd; timeout = 30 }) }
+$geoCmd = "powershell -NoProfile -ExecutionPolicy Bypass -File `"$hooks\geo-audit.ps1`""
+$settings.hooks.SessionStart = @(@($settings.hooks.SessionStart) | Where-Object { $_ -and -not (($_ | ConvertTo-Json -Depth 20) -match 'geo-audit\.ps1') })
+if (Test-Path (Join-Path $hooks 'geo-audit.ps1')) {
+  $settings.hooks.SessionStart = @($settings.hooks.SessionStart) + [pscustomobject]@{
+    matcher = 'startup|resume|clear'; hooks = @([pscustomobject]@{ type = 'command'; command = $geoCmd; timeout = 20 }) }
+}
 
 if (-not $settings.PSObject.Properties['permissions']) { $settings | Add-Member permissions ([pscustomobject]@{}) }
 if (-not $settings.permissions.PSObject.Properties['allow']) { $settings.permissions | Add-Member allow @() }
 $remover = @('Bash(find:*)', 'Bash(sed -n:*)', 'Write(.claude/**)')                 # podem apagar/gravar arquivos
-$seguras = @('Read(//d/reference-libs/**)', 'Read(//c/reference-libs/**)', 'Read(//c/Users/claud/Documents/libs-referencia/**)', 'Read(~/.claude/**)', 'Bash(claude mcp list:*)', 'Edit(.claude/**)')
+$seguras = @('Bash(uvx --from geo-optimizer-skill geo audit:*)', 'Bash(uvx --from geo-optimizer-skill geo fix:*)', 'Read(//d/reference-libs/**)', 'Read(//c/reference-libs/**)', 'Read(//c/Users/claud/Documents/libs-referencia/**)', 'Read(~/.claude/**)', 'Bash(claude mcp list:*)', 'Edit(.claude/**)')
 $settings.permissions.allow = @(@($settings.permissions.allow) + $seguras | Where-Object { $_ -and ($remover -notcontains $_) } | Select-Object -Unique)
 [IO.File]::WriteAllText($settingsPath, ($settings | ConvertTo-Json -Depth 20), $semBom)
 
@@ -189,4 +209,4 @@ if ((Test-Path 'D:\reference-libs') -and -not (Test-Path 'C:\reference-libs')) {
   } else { Write-Host "C: com menos de 1 GB livre - copia leve pulada (kickoff usa o D:)" -ForegroundColor Yellow }
 }
 
-Write-Host "OK - kickoff-projeto v4 instalado." -ForegroundColor Green
+Write-Host "OK - kickoff-projeto v5 instalado (com auditoria GEO automatica)." -ForegroundColor Green
