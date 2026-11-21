@@ -21,7 +21,35 @@ if (Test-Path (Join-Path $cat '.git')) {
 $catReadme = Join-Path $cat 'README.md'
 $catHash = if (Test-Path $catReadme) { (Get-FileHash $catReadme -Algorithm SHA256).Hash.Substring(0,16) } else { '' }
 $catPath = $cat -replace '\\','/'
-$lembrete = "PROJETO EM ANDAMENTO: siga .claude/KICKOFF.md. Antes de adicionar qualquer lib/ferramenta/serviço novo nesta sessão, consulte o catálogo $catPath/README.md (e as pastas por área) e prefira o que já está lá; se usar algo fora do catálogo, diga por quê."
+$lembrete = "PROJETO EM ANDAMENTO: siga .claude/KICKOFF.md. Antes de adicionar qualquer lib/ferramenta/serviço novo nesta sessão, consulte o catálogo $catPath/README.md (e as pastas por área) e prefira o que já está lá; se usar algo fora do catálogo, diga por quê. SEMPRE use os subagentes do catálogo instalados em ~/.claude/agents (origem $catPath/ai-agents) quando a tarefa combinar: delegue a eles (ex.: Reality Checker antes de dar algo por pronto, Code Reviewer e AI-Generated Code Security Auditor antes de subir, PPC/Tracking/Search Query para campanhas, SEO/AI Citation para sites, Multi-Agent Systems Architect para enxames)."
+
+# Agentes do catálogo: instala/atualiza sozinho as pastas de ai-agents marcadas com .auto-instalar
+$agDest = Join-Path $env:USERPROFILE '.claude\agents'
+$manif = Join-Path $agDest '.libs-referencia.json'
+$pastasAg = Get-ChildItem (Join-Path $cat 'ai-agents') -Directory | Where-Object { Test-Path (Join-Path $_.FullName '.auto-instalar') }
+if ($pastasAg) {
+  New-Item -ItemType Directory -Force $agDest | Out-Null
+  $m = @{}
+  if (Test-Path $manif) { try { (Get-Content $manif -Raw | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $m[$_.Name] = $_.Value } } catch {} }
+  $novosAg = @(); $atualAg = 0
+  foreach ($pa in $pastasAg) {
+    foreach ($f in (Get-ChildItem $pa.FullName -Filter '*.md' | Where-Object { $_.Name -ne 'README.md' })) {
+      $alvo = Join-Path $agDest $f.Name
+      $h = (Get-FileHash $f.FullName).Hash
+      if (-not (Test-Path $alvo)) { Copy-Item $f.FullName $alvo; $m[$f.Name] = $h; $novosAg += $f.BaseName; continue }
+      $hAlvo = (Get-FileHash $alvo).Hash
+      if ($hAlvo -eq $h) { $m[$f.Name] = $h; continue }
+      # atualiza só se o arquivo instalado ainda é o que o catálogo instalou (não sobrescreve edição sua)
+      if ($m.ContainsKey($f.Name) -and $m[$f.Name] -eq $hAlvo) { Copy-Item $f.FullName $alvo -Force; $m[$f.Name] = $h; $atualAg++ }
+    }
+  }
+  ($m | ConvertTo-Json) | Set-Content $manif -Encoding UTF8
+  if ($novosAg.Count -gt 0) {
+    $lista = ($novosAg | Select-Object -First 12) -join ', '; if ($novosAg.Count -gt 12) { $lista += ', ...' }
+    Write-Output "AGENTES: $($novosAg.Count) subagente(s) novo(s) do libs-referencia instalado(s) em ~/.claude/agents ($lista). Ficam disponíveis a partir da próxima sessão (ou /agents)."
+  }
+  if ($atualAg -gt 0) { Write-Output "AGENTES: $atualAg subagente(s) do libs-referencia atualizado(s)." }
+}
 
 # Impressão digital: nomes de skills, plugins, MCPs e repos (sem versões)
 $cl = Join-Path $env:USERPROFILE '.claude'

@@ -1,5 +1,5 @@
 ﻿# =====================================================================
-#  Instalador do agente "kickoff-projeto" v5 para Claude Code (Windows)
+#  Instalador do agente "kickoff-projeto" v6 para Claude Code (Windows)
 #  Rode:  powershell -ExecutionPolicy Bypass -File .\instalar-kickoff.ps1
 # =====================================================================
 $ErrorActionPreference = 'Stop'
@@ -41,14 +41,15 @@ o que ele já tem (repos de referência, catálogo, skills, MCPs), em vez de rei
 ## Passo 3 — Catálogo libs-referencia (PRIORIDADE)
 - Leia README.md e as pastas por área (backend/, devops/, security/...) de C:/Users/claud/Documents/libs-referencia.
 
-## Passo 4 — Skills e MCPs
+## Passo 4 — Skills, subagentes e MCPs
 - Frontmatter (name/description) de ~/.claude/skills/*/SKILL.md, .claude/skills do projeto e skills de plugins.
+- Subagentes: frontmatter de ~/.claude/agents/*.md (inclui os instalados do catálogo, origem libs-referencia/ai-agents). Escolha os que servem a cada fase.
 - `claude mcp list`: considere SÓ os MCPs com status conectado; ignore os que pedem autenticação.
 
 ## Passo 5 — Entregar
 Grave `.claude/KICKOFF.md` com: 1) stack recomendada ([catálogo]/[reference-libs]/[nova]);
-2) repos base do reference-libs; 3) skills por fase; 4) MCPs por fase (só os conectados);
-5) comandos base (não execute); 6) riscos técnicos e licenças.
+2) repos base do reference-libs; 3) skills por fase; 4) subagentes do catálogo por fase (quem chamar em cada etapa); 5) MCPs por fase (só os conectados);
+6) comandos base (não execute); 7) riscos técnicos e licenças.
 Se tiver frontend, inclua referência visual react-bits (github.com/DavidHDev/react-bits).
 Se souber a "Impressão digital" do hook, grave-a em `.claude/kickoff.done` (se não souber, o hook grava sozinho na próxima sessão).
 Se o projeto usa git, garanta a linha `.claude/kickoff.*` no .gitignore.
@@ -90,7 +91,35 @@ if (Test-Path (Join-Path $cat '.git')) {
 $catReadme = Join-Path $cat 'README.md'
 $catHash = if (Test-Path $catReadme) { (Get-FileHash $catReadme -Algorithm SHA256).Hash.Substring(0,16) } else { '' }
 $catPath = $cat -replace '\\','/'
-$lembrete = "PROJETO EM ANDAMENTO: siga .claude/KICKOFF.md. Antes de adicionar qualquer lib/ferramenta/serviço novo nesta sessão, consulte o catálogo $catPath/README.md (e as pastas por área) e prefira o que já está lá; se usar algo fora do catálogo, diga por quê."
+$lembrete = "PROJETO EM ANDAMENTO: siga .claude/KICKOFF.md. Antes de adicionar qualquer lib/ferramenta/serviço novo nesta sessão, consulte o catálogo $catPath/README.md (e as pastas por área) e prefira o que já está lá; se usar algo fora do catálogo, diga por quê. SEMPRE use os subagentes do catálogo instalados em ~/.claude/agents (origem $catPath/ai-agents) quando a tarefa combinar: delegue a eles (ex.: Reality Checker antes de dar algo por pronto, Code Reviewer e AI-Generated Code Security Auditor antes de subir, PPC/Tracking/Search Query para campanhas, SEO/AI Citation para sites, Multi-Agent Systems Architect para enxames)."
+
+# Agentes do catálogo: instala/atualiza sozinho as pastas de ai-agents marcadas com .auto-instalar
+$agDest = Join-Path $env:USERPROFILE '.claude\agents'
+$manif = Join-Path $agDest '.libs-referencia.json'
+$pastasAg = Get-ChildItem (Join-Path $cat 'ai-agents') -Directory | Where-Object { Test-Path (Join-Path $_.FullName '.auto-instalar') }
+if ($pastasAg) {
+  New-Item -ItemType Directory -Force $agDest | Out-Null
+  $m = @{}
+  if (Test-Path $manif) { try { (Get-Content $manif -Raw | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $m[$_.Name] = $_.Value } } catch {} }
+  $novosAg = @(); $atualAg = 0
+  foreach ($pa in $pastasAg) {
+    foreach ($f in (Get-ChildItem $pa.FullName -Filter '*.md' | Where-Object { $_.Name -ne 'README.md' })) {
+      $alvo = Join-Path $agDest $f.Name
+      $h = (Get-FileHash $f.FullName).Hash
+      if (-not (Test-Path $alvo)) { Copy-Item $f.FullName $alvo; $m[$f.Name] = $h; $novosAg += $f.BaseName; continue }
+      $hAlvo = (Get-FileHash $alvo).Hash
+      if ($hAlvo -eq $h) { $m[$f.Name] = $h; continue }
+      # atualiza só se o arquivo instalado ainda é o que o catálogo instalou (não sobrescreve edição sua)
+      if ($m.ContainsKey($f.Name) -and $m[$f.Name] -eq $hAlvo) { Copy-Item $f.FullName $alvo -Force; $m[$f.Name] = $h; $atualAg++ }
+    }
+  }
+  ($m | ConvertTo-Json) | Set-Content $manif -Encoding UTF8
+  if ($novosAg.Count -gt 0) {
+    $lista = ($novosAg | Select-Object -First 12) -join ', '; if ($novosAg.Count -gt 12) { $lista += ', ...' }
+    Write-Output "AGENTES: $($novosAg.Count) subagente(s) novo(s) do libs-referencia instalado(s) em ~/.claude/agents ($lista). Ficam disponíveis a partir da próxima sessão (ou /agents)."
+  }
+  if ($atualAg -gt 0) { Write-Output "AGENTES: $atualAg subagente(s) do libs-referencia atualizado(s)." }
+}
 
 # Impressão digital: nomes de skills, plugins, MCPs e repos (sem versões)
 $cl = Join-Path $env:USERPROFILE '.claude'
@@ -191,6 +220,11 @@ if ($atual -notmatch 'Projeto em andamento') {
   $regra2 = "`r`n## Projeto em andamento (sempre)`r`n- Ao CONTINUAR ou EDITAR qualquer projeto: antes de adicionar lib, ferramenta, API ou serviço novo, consulte o catálogo C:/Users/claud/Documents/libs-referencia (README.md + pastas por área) e prefira o que já está lá. Se escolher algo fora do catálogo, diga por quê.`r`n- Se o hook avisar ARSENAL ATUALIZADO, rode o kickoff-projeto em modo atualização antes de seguir.`r`n"
   [IO.File]::WriteAllText($claudeMd, $atual + $regra2, $semBom)
 }
+$atual = [IO.File]::ReadAllText($claudeMd)
+if ($atual -notmatch 'Subagentes do catálogo') {
+  $regra3 = "`r`n## Subagentes do catálogo (sempre)`r`n- Em TODO projeto (novo ou em andamento), use os subagentes instalados em ~/.claude/agents que vêm do libs-referencia (pasta ai-agents, inclusive os que forem adicionados depois): delegue a eles quando a tarefa combinar com a especialidade.`r`n- Mínimo por entrega: Code Reviewer e AI-Generated Code Security Auditor antes de subir código; Reality Checker antes de dar algo por pronto.`r`n- O hook instala sozinho os agentes novos do catálogo; eles aparecem na sessão seguinte.`r`n"
+  [IO.File]::WriteAllText($claudeMd, $atual + $regra3, $semBom)
+}
 
 # catálogo local: garante o clone em Documents (o hook faz git pull a cada sessão)
 $catDir = Join-Path $env:USERPROFILE 'Documents\libs-referencia'
@@ -209,4 +243,4 @@ if ((Test-Path 'D:\reference-libs') -and -not (Test-Path 'C:\reference-libs')) {
   } else { Write-Host "C: com menos de 1 GB livre - copia leve pulada (kickoff usa o D:)" -ForegroundColor Yellow }
 }
 
-Write-Host "OK - kickoff-projeto v5 instalado (com auditoria GEO automatica)." -ForegroundColor Green
+Write-Host "OK - kickoff-projeto v6 instalado (auditoria GEO + subagentes do catalogo automaticos)." -ForegroundColor Green

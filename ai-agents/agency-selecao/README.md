@@ -16,6 +16,12 @@ powershell -ExecutionPolicy Bypass -File .\setup\instalar-agentes-agency.ps1
 O script copia os 39 arquivos para `~/.claude/agents` e **não sobrescreve** agente que já exista com o mesmo arquivo
 (use `-Force` para atualizar). Para remover: `-Remover`.
 
+**Automático (kickoff v6):** depois de rodar uma vez o `setup/instalar-kickoff.ps1`, o hook de início de sessão instala
+sozinho, em todo projeto, os agentes de qualquer pasta de `ai-agents/` que tenha o arquivo `.auto-instalar` (esta pasta tem).
+Agente novo adicionado aqui entra no `~/.claude/agents` na próxima sessão; agente alterado no catálogo é atualizado,
+exceto se você tiver editado a cópia instalada. A regra "Subagentes do catálogo (sempre)" no `CLAUDE.md` global faz o
+Claude delegar a eles quando a tarefa combinar.
+
 ## Engenharia e IA (12)
 
 | Agente | Por que entrou |

@@ -25,14 +25,15 @@ o que ele já tem (repos de referência, catálogo, skills, MCPs), em vez de rei
 ## Passo 3 — Catálogo libs-referencia (PRIORIDADE)
 - Leia README.md e as pastas por área (backend/, devops/, security/...) de C:/Users/claud/Documents/libs-referencia.
 
-## Passo 4 — Skills e MCPs
+## Passo 4 — Skills, subagentes e MCPs
 - Frontmatter (name/description) de ~/.claude/skills/*/SKILL.md, .claude/skills do projeto e skills de plugins.
+- Subagentes: frontmatter de ~/.claude/agents/*.md (inclui os instalados do catálogo, origem libs-referencia/ai-agents). Escolha os que servem a cada fase.
 - `claude mcp list`: considere SÓ os MCPs com status conectado; ignore os que pedem autenticação.
 
 ## Passo 5 — Entregar
 Grave `.claude/KICKOFF.md` com: 1) stack recomendada ([catálogo]/[reference-libs]/[nova]);
-2) repos base do reference-libs; 3) skills por fase; 4) MCPs por fase (só os conectados);
-5) comandos base (não execute); 6) riscos técnicos e licenças.
+2) repos base do reference-libs; 3) skills por fase; 4) subagentes do catálogo por fase (quem chamar em cada etapa); 5) MCPs por fase (só os conectados);
+6) comandos base (não execute); 7) riscos técnicos e licenças.
 Se tiver frontend, inclua referência visual react-bits (github.com/DavidHDev/react-bits).
 Se souber a "Impressão digital" do hook, grave-a em `.claude/kickoff.done` (se não souber, o hook grava sozinho na próxima sessão).
 Se o projeto usa git, garanta a linha `.claude/kickoff.*` no .gitignore.
